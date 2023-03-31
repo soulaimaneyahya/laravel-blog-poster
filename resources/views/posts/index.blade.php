@@ -1,11 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="flex justify-center">
-    <div class="w-8/12 bg-white p-6 rounded-lg">
-        <h1 class="text-3xl font-bold underline">
-            Posts
-        </h1>
-    </div>
-</div>
+<section>
+    <h3 class="mb-5 text-2xl font-medium dark:text-gray-300">Posts</h3>
+</section>
 @endsection
