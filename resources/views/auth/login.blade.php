@@ -30,6 +30,13 @@
             </div>
 
             <div class="mb-4">
+                <div class="flex items-center">
+                    <input type="checkbox" name="remember" id="remember" class="mr-2">
+                    <label for="remember">Remember me</label>
+                </div>
+            </div>
+
+            <div class="mb-4">
                 <button class="btn-primary w-full" type="submit">Login</button>
             </div>
 
