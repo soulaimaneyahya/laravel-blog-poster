@@ -23,7 +23,7 @@ class LoginController extends Controller
     {
         // @method static bool attempt(array $credentials = [], bool $remember = false)
         if (!auth()->attempt($request->validated(), $request->remember)) {
-            return back()->with('status', 'These credentials do not match our records');
+            return back()->with('status', 'These credentials do not match our records')->withInput();
         }
         $request->session()->regenerate();
 
