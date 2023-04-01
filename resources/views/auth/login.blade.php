@@ -5,7 +5,7 @@
 
 <section class="flex align-start justify-between">
     <div class="w-full md:w-1/2">
-        <form action="{{ route('login') }}" method="POST">
+        <form action="{{ route('login') }}" method="POST" class="mb-4">
             @csrf
             <div class="mb-4">
                 <label for="username" class="label">Username</label>
@@ -40,7 +40,7 @@
                 <button class="btn-primary w-full" type="submit">Login</button>
             </div>
 
-            <div class="mb-4">
+            <div>
                 <a href="{{ route('register') }}" class="text-dark-500 dark:text-gray-300 underline text-sm">Don't have an account yet? Register</a>
             </div>
         </form>
