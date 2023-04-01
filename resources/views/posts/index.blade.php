@@ -23,14 +23,21 @@
     </form>
     @endauth
 
-    @forelse ($posts as $post)
-    <div class="mb-4">
-        <a href="" class="font-bold">{{ '@'. $post->user->username }}</a>
-        <span class="text-gray-600 text-sm">{{ $post->created_at->diffForHumans() }}</span>
-        <p class="mb-2">{{ $post->content }}</p>
-    </div>
-    @empty
-    <p>There are no posts</p>
-    @endforelse
+    @if ($posts->count())
+        @foreach ($posts as $post)
+            <div class="mb-4">
+                <a href="" class="font-bold">{{ '@'. $post->user->username }}</a>
+                <span class="text-gray-600 text-sm">{{ $post->created_at->diffForHumans() }}</span>
+                <p class="mb-2">{{ $post->content }}</p>
+            </div>
+        @endforeach
+
+        <div class="my-2">
+            {{ $posts->links('pagination::tailwind') }}
+        </div>
+    @else
+        <p>There are no posts</p>
+    @endif
+
 </section>
 @endsection
