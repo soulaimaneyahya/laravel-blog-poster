@@ -20,6 +20,9 @@ Route::get('/', function () {
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
+
+    Route::get('posts', [PostController::class, 'index'])->name('posts.index');
+    Route::post('posts', [PostController::class, 'store'])->name('posts.store');
 });
 
 Route::group(['middleware' => 'guest'], function(){
@@ -28,10 +31,3 @@ Route::group(['middleware' => 'guest'], function(){
     Route::get('/register', [RegisterController::class, 'index'])->name('register');
     Route::post('/register', [RegisterController::class, 'store']);
 });
-
-Route::get('/posts', function () {
-    return view('posts.index');
-})->name('posts.index');
-
-Route::get('posts', [PostController::class, 'index'])->name('posts.index');
-Route::post('posts', [PostController::class, 'store'])->name('posts.store');

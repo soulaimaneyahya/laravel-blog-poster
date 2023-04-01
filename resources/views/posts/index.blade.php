@@ -24,9 +24,13 @@
     @endauth
 
     @forelse ($posts as $post)
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim error quod repudiandae at, harum velit optio autem placeat saepe dolores.</p>
+    <div class="mb-4">
+        <a href="" class="font-bold">{{ '@'. $post->user->username }}</a>
+        <span class="text-gray-600 text-sm">{{ $post->created_at->diffForHumans() }}</span>
+        <p class="mb-2">{{ $post->content }}</p>
+    </div>
     @empty
-        <p>There are no posts</p>
+    <p>There are no posts</p>
     @endforelse
 </section>
 @endsection
