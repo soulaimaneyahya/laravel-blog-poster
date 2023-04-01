@@ -4,18 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Models\Post;
 
 class PostController extends Controller
 {
     public function index()
     {
-        $posts = [];
+        $posts = Post::all();
+        
         return view('posts.index', compact('posts'));
     }
 
     public function store(StorePostRequest $request)
     {
-        dd('ok');
+        $request->user()->posts()->create($request->validated());
+        
+        return back()->with('status', 'Post Created');
     }
 
     public function update(UpdatePostRequest $request)

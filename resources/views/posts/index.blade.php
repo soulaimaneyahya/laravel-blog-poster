@@ -7,10 +7,10 @@
     <form action="{{ route('posts.store') }}" method="post" class="mb-4">
         @csrf
         <div class="mb-4">
-            <label for="body" class="label sr-only">Body</label>
-            <textarea type="text" class="input" name="body" id="body" cols="30" rows="4" placeholder="Post something!" value="{{ old('body') }}" required></textarea>
+            <label for="content" class="label sr-only">Content</label>
+            <textarea type="text" class="input" name="content" id="content" cols="30" rows="4" placeholder="Post something!" value="{{ old('content') }}" required></textarea>
 
-            @error('body')
+            @error('content')
             <div class="input-error">
                 {{ $message }}
             </div>
@@ -24,7 +24,6 @@
     @endauth
 
     @forelse ($posts as $post)
-        <h3>Lorem ipsum dolor sit.</h3>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim error quod repudiandae at, harum velit optio autem placeat saepe dolores.</p>
     @empty
         <p>There are no posts</p>
