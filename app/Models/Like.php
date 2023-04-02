@@ -2,20 +2,18 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Post extends Model
+class Like extends Model
 {
-    use HasFactory, HasUuids, SoftDeletes;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'user_id',
-        'content'
+        'post_id'
     ];
 
     protected $dates = ['deleted_at'];
@@ -34,8 +32,8 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function likes(): HasMany
+    public function post(): BelongsTo
     {
-        return $this->hasMany(Like::class);
+        return $this->belongsTo(Post::class);
     }
 }
