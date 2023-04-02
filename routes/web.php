@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\Auth\LogoutController;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Post\LikeController;
+use App\Http\Controllers\Post\PostController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,9 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('posts', [PostController::class, 'index'])->name('posts.index');
     Route::post('posts', [PostController::class, 'store'])->name('posts.store');
+    // like & unlike
+    Route::post('posts/{post}/likes', [LikeController::class, 'store'])->name('posts.likes');
+    Route::delete('posts/{post}/likes', [LikeController::class, 'destroy'])->name('posts.likes');
 });
 
 Route::group(['middleware' => 'guest'], function(){
