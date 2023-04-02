@@ -18,11 +18,12 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
+Route::get('posts', [PostController::class, 'index'])->name('posts.index');
+
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
-    Route::get('posts', [PostController::class, 'index'])->name('posts.index');
     Route::post('posts', [PostController::class, 'store'])->name('posts.store');
     // like & unlike
     Route::post('posts/{post}/likes', [LikeController::class, 'store'])->name('posts.likes');
