@@ -24,14 +24,19 @@ class PostController extends Controller
         return back()->with('status', 'Post Created');
     }
 
-    public function update(UpdatePostRequest $request)
-    {
-        dd('ok');
-    }
-
     public function show(Post $post)
     {
-        dd($post);
+        return view('posts.show', compact('post'));
+    }
+
+    public function edit(Post $post)
+    {
+        return view('posts.edit', compact('post'));
+    }
+
+    public function update(UpdatePostRequest $request, Post $post)
+    {
+        dd('ok');
     }
 
     public function destroy(Post $post)
@@ -39,7 +44,7 @@ class PostController extends Controller
         if (Gate::denies('delete-post', $post)) {
             return abort(403);
         }
-        
+
         $post->delete();
 
         return redirect()->back();
