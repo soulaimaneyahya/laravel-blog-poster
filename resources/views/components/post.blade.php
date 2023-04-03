@@ -7,7 +7,6 @@
             <span class="text-gray-600 text-sm">{{ $post->created_at->diffForHumans() }}</span>
         </div>
         <div>
-            @can('delete-post', $post)
             <button id="dropdownDefaultDots" data-dropdown-toggle="dropdown" class="font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" type="button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
                     <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
@@ -25,6 +24,7 @@
                             <span class="mx-2">View post</span>
                         </a>
                     </li>
+                    @can('delete-post', $post)
                     <li>
                         <a href="{{ route('posts.edit', $post) }}" class="edit flex justify-start items-center px-4 py-2 hover:bg-gray-100">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
@@ -45,9 +45,9 @@
                             </button>
                         </form>
                     </li>
+                    @endcan
                 </ul>
             </div>
-            @endcan
         </div>
     </div>
     <p class="mb-2">{{ $post->content }}</p>
