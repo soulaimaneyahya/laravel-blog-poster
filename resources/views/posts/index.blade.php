@@ -25,7 +25,7 @@
 
     @if ($posts->count())
         @foreach ($posts as $post)
-            @include('posts.partials.post')
+            <x-post :post="$post" />
         @endforeach
 
         <div class="my-2">

@@ -12,13 +12,13 @@
             <h3 class="text-md font-medium dark:text-gray-300">{{ '@'. $user->name }}</h3>
         </div>
         <div class="mt-2">
-            <p class="text-sm text-gray-500 font-semibold p-0 m-0">Has {{ $posts->count() }} {{ Str::plural('post', $posts->count()) }}</p>
+            <p class="text-sm text-gray-500 font-semibold p-0 m-0">Posted {{ $posts->count() }} {{ Str::plural('post', $posts->count()) }}</p>
         </div>
     </div>
 
     @if ($posts->count())
         @foreach ($posts as $post)
-            @include('posts.partials.post')
+            <x-post :post="$post" />
         @endforeach
 
         <div class="my-2">

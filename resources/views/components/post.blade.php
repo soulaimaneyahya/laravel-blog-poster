@@ -1,3 +1,5 @@
+@props(['post'])
+
 <div class="bg-gray-100 p-3 rounded-md mb-4 shadow">
     <div class="flex justify-between align-center">
         <div>
