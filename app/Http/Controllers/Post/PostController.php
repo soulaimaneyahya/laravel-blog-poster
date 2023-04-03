@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Post;
+use Illuminate\Support\Facades\Gate;
 
 class PostController extends Controller
 {
@@ -26,5 +27,21 @@ class PostController extends Controller
     public function update(UpdatePostRequest $request)
     {
         dd('ok');
+    }
+
+    public function show(Post $post)
+    {
+        dd($post);
+    }
+
+    public function destroy(Post $post)
+    {
+        if (Gate::denies('delete-post', $post)) {
+            return abort(403);
+        }
+        
+        $post->delete();
+
+        return redirect()->back();
     }
 }

@@ -25,6 +25,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
     Route::post('posts', [PostController::class, 'store'])->name('posts.store');
+    Route::get('posts/{post}', [PostController::class, 'show'])->name('posts.show');
+    Route::delete('posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
     // like & unlike
     Route::post('posts/{post}/likes', [LikeController::class, 'store'])->name('posts.likes');
     Route::delete('posts/{post}/likes', [LikeController::class, 'destroy'])->name('posts.likes');

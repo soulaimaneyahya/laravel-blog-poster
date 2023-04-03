@@ -14,6 +14,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link rel="icon" href="https://pngimg.com/uploads/circle/circle_PNG36.png" type="image/png">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @yield('styles')
 </head>
 
 <body class="bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-300">
