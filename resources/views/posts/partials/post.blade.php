@@ -1,7 +1,7 @@
 <div class="bg-gray-100 p-3 rounded-md mb-4 shadow">
     <div class="flex justify-between align-center">
         <div>
-            <a href="" class="font-bold">{{ '@' . $post->user->username }}</a>
+            <a href="{{ route('users.show', $post->user) }}" class="font-bold">{{ '@' . $post->user->username }}</a>
             <span class="text-gray-600 text-sm">{{ $post->created_at->diffForHumans() }}</span>
         </div>
         <div>

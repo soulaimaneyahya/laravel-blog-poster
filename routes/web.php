@@ -7,6 +7,7 @@ use App\Http\Controllers\Post\PostController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\User\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,7 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('posts', [PostController::class, 'index'])->name('posts.index');
+Route::get('users/{user}', [UserController::class, 'show'])->name('users.show');
 
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
