@@ -19,7 +19,9 @@ class LikeController extends Controller
             'user_id' => auth()->id()
         ]);
 
-        Mail::to($post->user)->send(new PostLiked(auth()->user(), $post));
+        if (!$post->hasLiked($post, auth()->user())) {
+            Mail::to($post->user)->send(new PostLiked(auth()->user(), $post));
+        }
 
         return redirect()->back();
     }

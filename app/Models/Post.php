@@ -34,6 +34,11 @@ class Post extends Model
         return $this->likes->contains('user_id', $user->id);
     }
 
+    public function hasLiked(Post $post, User $user)
+    {
+        return $post->likes()->onlyTrashed()->get()->contains('user_id', $user->id);
+    }
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
