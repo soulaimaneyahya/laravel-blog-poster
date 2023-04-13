@@ -2,9 +2,12 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Schema;
+
+use Illuminate\Support\ServiceProvider;
+use App\View\Composers\DashboardComposer;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,5 +28,7 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
         // pagination
         Paginator::useTailwind();
+        // view composer, pass data to views globally
+        View::composer('dashboard.index', DashboardComposer::class);
     }
 }

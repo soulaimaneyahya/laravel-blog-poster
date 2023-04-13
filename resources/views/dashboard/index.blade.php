@@ -46,10 +46,10 @@
                             </div>
                             <div class="flex items-center justify-between w-full gap-5 text-center">
                                 <div class="stats-box w-1/2 flex items-center justify-center">
-                                    <span class="value">{{ round($postsCountPercent, 2) . '%' }}</span>
+                                    <span class="value">{{ $postsCountPercent }}</span>
                                 </div>
                                 <div class="stats-box w-1/2 flex items-center justify-center">
-                                    <span class="value">{{ round($postsCountTrashedPercent, 2) . '%' }}</span>
+                                    <span class="value">{{ $postsCountTrashedPercent }}</span>
                                 </div>
                             </div>
                         </div>
@@ -61,13 +61,13 @@
     <section>
         <h4 class="mb-5 text-lg underline font-medium dark:text-gray-300">Your Posts</h4>
         @if ($posts->count())
-        @foreach ($posts as $post)
-        <p class="py-3 border-b border-gray-200">{{ $post->content }}</p>
-        @endforeach
+            @foreach ($posts as $post)
+            <p class="py-3 border-b border-gray-200">{{ $post->content }}</p>
+            @endforeach
 
-        <div class="my-2">
-            {{ $posts->links('pagination::tailwind') }}
-        </div>
+            <div class="my-2">
+                {{ $posts->links('pagination::tailwind') }}
+            </div>
         @else
         <p>You don't have any posts</p>
         @endif
