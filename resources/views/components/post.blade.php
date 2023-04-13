@@ -1,6 +1,6 @@
 @props(['post'])
 
-<div class="bg-gray-100 p-3 rounded-md mb-4 shadow">
+<div class="border-b border-gray-100 p-3 rounded-md mb-4 shadow">
     <div class="flex justify-between align-center">
         <div>
             <a href="{{ route('users.show', $post->user) }}" class="font-bold">{{ '@' . $post->user->username }}</a>

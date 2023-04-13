@@ -28,4 +28,34 @@
     .btn-outline {
         @apply p-2 rounded-md border shadow-sm border-gray-300 dark: border-gray-700 hover:border-gray-400 hover:bg-gray-50 dark:hover:border-gray-600 dark:hover:bg-gray-700
     }
+
+    /* cards */
+    .outer-block {
+        @apply rounded shadow-lg shadow-gray-100 border border-gray-200 bg-white
+    }
+
+    .outer-block-header {
+        @apply border-b border-gray-200 p-5 h-16
+    }
+
+    .outer-block-body {
+        @apply p-5
+    }
+
+    .is-grid {
+        @apply grid gap-5
+    }
+
+    /* cards - state box */
+    .stats-box {
+        @apply rounded shadow-lg shadow-gray-100 border border-gray-200 bg-white p-5 h-28
+    }
+
+    .stats-box .title {
+        @apply pb-3 text-sm font-medium opacity-80
+    }
+
+    .stats-box .value {
+        @apply text-3xl font-bold leading-none
+    }
 }

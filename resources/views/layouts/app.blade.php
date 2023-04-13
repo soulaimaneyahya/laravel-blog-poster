@@ -24,7 +24,7 @@
                 <nav class="p-4 flex items-center justify-between">
                     <ul class="flex items-center">
                         <li>
-                            <a href="/" class="p-3">Home</a>
+                            <a href="/" class="pe-3">Home</a>
                         </li>
                         @auth
                         <li>
@@ -45,7 +45,7 @@
                         <li>
                             <form action="{{ route('logout') }}" method="post" class="p-3 inline">
                                 @csrf
-                                <button type="submit" class="p-3">Logout</button>
+                                <button type="submit" class="ps-3">Logout</button>
                             </form>
                         </li>
                         @endauth
@@ -55,7 +55,7 @@
                             <a href="{{ route('login') }}" class="p-3">Login</a>
                         </li>
                         <li>
-                            <a href="{{ route('register') }}" class="p-3">Register</a>
+                            <a href="{{ route('register') }}" class="ps-3">Register</a>
                         </li>
                         @endguest
                     </ul>
@@ -76,6 +76,7 @@
             @yield('content')
         </main>
     </div>
+    @yield('scripts')
 </body>
 
 </html>
