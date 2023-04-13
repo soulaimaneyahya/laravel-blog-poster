@@ -36,6 +36,11 @@ npm run dev
 php artisan db:seed
 ```
 
+## You can start `Mailhog` by simply running the command:
+```
+mailgog
+```
+
 ---
 
 Need helps? Reach me out
