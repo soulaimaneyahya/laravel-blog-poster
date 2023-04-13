@@ -3,8 +3,8 @@
 @section('content')
 <h3 class="mb-5 text-2xl font-medium dark:text-gray-300">Login</h3>
 
-<section class="flex align-start justify-between">
-    <div class="w-full md:w-1/2">
+<section class="flex align-start justify-between gap-5">
+    <div class="w-full md:w-2/3">
         <form action="{{ route('login') }}" method="POST" class="mb-4">
             @csrf
             <div class="mb-4">

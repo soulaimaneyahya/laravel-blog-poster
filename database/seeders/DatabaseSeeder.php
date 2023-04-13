@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             UserSeeder::class,
-            PostSeeder::class
+            PostSeeder::class,
+            LikeSeeder::class
         ]);
 
         $this->command->info("---------------------------------- thanks seeder");

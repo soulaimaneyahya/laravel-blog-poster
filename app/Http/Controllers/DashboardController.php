@@ -6,6 +6,8 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('dashboard');
+        $posts = auth()->user()->posts()->latest()->with(['user', 'likes'])->paginate(5);
+
+        return view('dashboard.index', compact('posts'));
     }
 }

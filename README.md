@@ -5,6 +5,7 @@ Laravel project for creating and managing blog posts. Includes a user-friendly i
 ## Project overview:
 
 <img src="./public/assets/img/posts.png" alt="project" />
+<img src="./public/assets/img/dashboard.png" alt="project" />
 
 ## Starting Project
 
