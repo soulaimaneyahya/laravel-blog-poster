@@ -17,13 +17,13 @@
     </div>
 
     @if ($posts->count())
-    @foreach ($posts as $post)
-    <x-post :post="$post" />
-    @endforeach
+        @foreach ($posts as $post)
+            <x-post :post="$post" />
+        @endforeach
 
-    <div class="my-2">
-        {{ $posts->links('pagination::tailwind') }}
-    </div>
+        <div class="my-2">
+            {{ $posts->links('pagination::tailwind') }}
+        </div>
     @else
     <p>There are no posts</p>
     @endif

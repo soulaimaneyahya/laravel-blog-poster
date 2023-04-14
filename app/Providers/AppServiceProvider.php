@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Like;
+use App\Models\Post;
+use App\Observers\LikeObserver;
+use App\Observers\PostObserver;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Schema;
@@ -30,5 +34,8 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useTailwind();
         // view composer, pass data to views globally
         View::composer('dashboard.index', DashboardComposer::class);
+
+        Post::observe(PostObserver::class);
+        Like::observe(LikeObserver::class);
     }
 }
