@@ -5,10 +5,10 @@
         <div class="flex justify-between align-center">
             <div>
                 <h3 class="mb-2 text-2xl font-medium dark:text-gray-300">Dashboard</h3>
-                <h4 class="mb-5 text-lg dark:text-gray-300">Posted <span class="font-medium">{{ auth()->user()->posts->count() }}</span>
-                    {{ Str::plural('post',auth()->user()->posts->count()) }}, and recieve
-                    <span class="font-medium">{{ auth()->user()->recievedLikes->count() }}</span>
-                    {{ Str::plural('like',auth()->user()->recievedLikes->count()) }}</h4>
+                <h4 class="mb-5 text-lg dark:text-gray-300">Posted <span class="font-medium">{{ $postsCount }}</span>
+                    {{ Str::plural('post',$postsCount) }}, and recieve
+                    <span class="font-medium">{{ $userRecievedLikes }}</span>
+                    {{ Str::plural('like',$userRecievedLikes) }}</h4>
             </div>
             <div>
                 <div class="mb-4">
@@ -90,14 +90,14 @@
         new Chart(lineChart, {
             type: 'bar',
             data: {
-                labels: <?= json_encode(array_keys($PostStatsData)) ?>,
+                labels: <?= json_encode(array_keys($postStatsData)) ?>,
                 datasets: [{
                     label: 'Total Likes',
                     backgroundColor: 'rgba(108, 113, 249, 0.3)',
                     borderColor: 'rgba(108, 113, 249, 0.9)',
                     borderWidth: 2,
                     fill: true,
-                    data: <?= json_encode(array_values($PostStatsData)) ?>
+                    data: <?= json_encode(array_values($postStatsData)) ?>
                 }],
             },
             options: {
