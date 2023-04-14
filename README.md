@@ -1,4 +1,4 @@
-# laravel-blog-poster
+# Laravel-Blog-Poster
 
 Laravel project for creating and managing blog posts. Includes a user-friendly interface for adding, editing, and deleting posts, as well as basic authentication functionality.
 
@@ -6,6 +6,11 @@ Laravel project for creating and managing blog posts. Includes a user-friendly i
 
 <img src="./public/assets/img/1.png" alt="project" />
 <img src="./public/assets/img/2.png" alt="project" />
+
+<div style="display:flex; gap:8px;">
+    <img src="./public/assets/img/responsive-1.png" alt="project" height="600" />
+    <img src="./public/assets/img/responsive-2.png" alt="project" height="600" />
+</div>
 
 ## Starting Project
 
