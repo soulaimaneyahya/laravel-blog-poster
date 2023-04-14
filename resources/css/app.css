@@ -16,6 +16,11 @@
         @apply text-sm text-red-500 dark:text-red-400
     }
 
+    /* nav */
+    .nav-link.active {
+        @apply font-semibold underline underline-offset-1
+    }
+
     /* buttons */
     .btn-normal {
         @apply bg-gray-200 hover:bg-gray-300 dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white font-medium p-2 rounded-md

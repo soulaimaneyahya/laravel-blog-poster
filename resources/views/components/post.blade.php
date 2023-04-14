@@ -34,7 +34,7 @@
                         </a>
                     </li>
                     <li>
-                        <form action="{{ route('posts.destroy', $post) }}" method="POST" class="px-4 py-2 hover:bg-gray-100">
+                        <form action="{{ route('posts.destroy', $post) }}" onsubmit="return confirm('Are you sure?')" method="POST" class="px-4 py-2 hover:bg-gray-100">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="delete flex justify-start items-center">

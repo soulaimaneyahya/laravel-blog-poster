@@ -12,7 +12,7 @@
             <h3 class="text-md font-medium dark:text-gray-300">{{ '@'. $user->name }}</h3>
         </div>
         <div class="mt-2">
-            <p class="text-sm text-gray-500 font-semibold p-0 m-0">Posted {{ $posts->count() }} {{ Str::plural('post', $posts->count()) }}, and recieve {{ $user->recievedLikes->count() }} {{ Str::plural('like', $user->recievedLikes->count()) }}</p>
+            <p class="text-sm text-gray-500 font-semibold p-0 m-0">Posted {{ $user->posts->count() }} {{ Str::plural('post', $user->posts->count()) }}, and recieve {{ $user->recievedLikes->count() }} {{ Str::plural('like', $user->recievedLikes->count()) }}</p>
         </div>
     </div>
 

@@ -4,8 +4,8 @@ Laravel project for creating and managing blog posts. Includes a user-friendly i
 
 ## Project overview:
 
-<img src="./public/assets/img/posts.png" alt="project" />
-<img src="./public/assets/img/dashboard.png" alt="project" />
+<img src="./public/assets/img/1.png" alt="project" />
+<img src="./public/assets/img/2.png" alt="project" />
 
 ## Starting Project
 
@@ -18,7 +18,7 @@ composer install
 1. Run the following command to generate your app key:
 
 ```
-php artisan key:generate
+cp .env.example .env && php artisan key:generate
 ```
 
 2. install npm and run
@@ -37,9 +37,9 @@ npm run dev
 php artisan db:seed
 ```
 
-## You can start `Mailhog` by simply running the command:
+### You can start `Mailhog` by simply running the command:
 ```
-mailgog
+mailhog
 ```
 
 ---

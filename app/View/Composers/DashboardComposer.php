@@ -2,13 +2,13 @@
 
 namespace App\View\Composers;
 
-use App\Services\PostsStatsData;
+use App\Services\PostStatsData;
 use Illuminate\View\View;
 
 class DashboardComposer
 {
     public function __construct(
-        private PostsStatsData $postsStatsData
+        private PostStatsData $PostStatsData
     ) {
       //  
     }
@@ -19,10 +19,10 @@ class DashboardComposer
         $totalPosts = auth()->user()->posts()->withTrashed()->get()->count();
 
         $postsCount = auth()->user()->posts->count();
-        $postsCountPercent = round(($totalPosts > 0) ? ($postsCount * 100) / $totalPosts : 0, 2) . '%';
+        $postsCountPercent = round(($totalPosts > 0) ? ($postsCount * 100) / $totalPosts : 0, 2);
 
         $postsCountTrashed = auth()->user()->posts()->onlyTrashed()->get()->count();
-        $postsCountTrashedPercent =  round(($totalPosts > 0) ? ($postsCountTrashed * 100) / $totalPosts : 0, 2) . '%';
+        $postsCountTrashedPercent =  round(($totalPosts > 0) ? ($postsCountTrashed * 100) / $totalPosts : 0, 2);
 
     
         $view->with('totalPosts', $totalPosts);
@@ -33,6 +33,6 @@ class DashboardComposer
         $view->with('postsCountTrashed', $postsCountTrashed);
         $view->with('postsCountTrashedPercent', $postsCountTrashedPercent);
 
-        $view->with('postsStatsData', $this->postsStatsData->data());
+        $view->with('PostStatsData', $this->PostStatsData->data());
     }
 }
