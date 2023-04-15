@@ -13,8 +13,7 @@ class LikeObserver
      */
     public function creating()
     {
-        Cache::forget("posts-stats-data");
-        Cache::forget("user-recieved-likes");
+        $this->cacheForget();
     }
 
     /**
@@ -23,6 +22,16 @@ class LikeObserver
      * @return void
      */
     public function deleting()
+    {
+        $this->cacheForget();
+    }
+
+    /**
+     * cache forget
+     * 
+     * @return void
+     */
+    public function cacheForget()
     {
         Cache::forget("posts-stats-data");
         Cache::forget("user-recieved-likes");

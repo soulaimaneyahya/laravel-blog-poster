@@ -19,12 +19,7 @@ class PostObserver
      */
     public function creating()
     {
-        Cache::forget("total-posts");
-        Cache::forget("posts-count");
-        Cache::forget("posts-count-percent");
-        Cache::forget("posts-count-trashed");
-        Cache::forget("posts-count-trashed-percent");
-
+        $this->cacheForget();
     }
 
     /**
@@ -35,14 +30,26 @@ class PostObserver
      */
     public function deleting(Post $post)
     {
+        $this->cacheForget();
+        
+        if ($post->likes()->delete()) {
+            $this->likeObserver->cacheForget();
+        }
+    }
+
+    /**
+     * cache forget
+     * 
+     * @return void
+     */
+    public function cacheForget()
+    {
+        $this->likeObserver->cacheForget();
+
         Cache::forget("total-posts");
         Cache::forget("posts-count");
         Cache::forget("posts-count-percent");
         Cache::forget("posts-count-trashed");
         Cache::forget("posts-count-trashed-percent");
-
-        if ($post->likes()->delete()) {
-            $this->likeObserver->deleting();
-        }
     }
 }
