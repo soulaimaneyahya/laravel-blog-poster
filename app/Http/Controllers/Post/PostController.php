@@ -13,14 +13,14 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::latest()->with(['user', 'likes'])->paginate(5);
-        
+
         return view('posts.index', compact('posts'));
     }
 
     public function store(StorePostRequest $request)
     {
         $request->user()->posts()->create($request->validated());
-        
+
         return back()->with('status', 'Post Created');
     }
 
@@ -36,7 +36,11 @@ class PostController extends Controller
 
     public function update(UpdatePostRequest $request, Post $post)
     {
-        dd('ok');
+        if (Gate::denies('update-post', $post)) {
+            return abort(403);
+        }
+        $post->update($request->validated());
+        return back()->with('status', 'Post Updated');
     }
 
     public function destroy(Post $post)
