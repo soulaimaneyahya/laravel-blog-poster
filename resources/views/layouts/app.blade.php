@@ -27,10 +27,10 @@
         </header>
 
         <main class="container mx-auto p-4">
-            @if (session('status'))
+            @if (session()->has('status'))
                 <!-- flash message -->
                 <div
-                    class="flex items-center gap-3 mb-4 border rounded-md shadow-sm border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-900 p-2">
+                    class="alert_ flex items-center gap-3 mb-4 border rounded-md shadow-sm border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-900 p-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-info-circle-fill" viewBox="0 0 16 16">
                         <path
@@ -43,6 +43,15 @@
         </main>
     </div>
     @yield('scripts')
+    {{-- Hide Alert After 9 Seconds --}}
+<script>
+    let s_alert = document.querySelector('.alert_');
+ function hideAlert(){
+     if(s_alert){
+         s_alert.remove();
+     }
+ }
+ setTimeout(hideAlert,9000);
+ </script>
 </body>
-
 </html>
