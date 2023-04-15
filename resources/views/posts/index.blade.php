@@ -8,7 +8,7 @@
         @csrf
         <div class="mb-4">
             <label for="content" class="label sr-only">Content</label>
-            <textarea type="text" class="input" name="content" id="content" cols="30" rows="4" placeholder="Post something!" value="{{ old('content') }}" required></textarea>
+            <textarea type="text" class="input" name="content" id="content" cols="30" rows="4" placeholder="Post something!" value="{{ old('content') }}"></textarea>
 
             @error('content')
             <div class="input-error">
