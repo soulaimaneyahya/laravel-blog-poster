@@ -5,14 +5,16 @@
         <div class="flex justify-between align-center">
             <div>
                 <h3 class="mb-2 text-lg text-2xl font-medium dark:text-gray-300">Dashboard</h3>
-                <h4 class="mb-5 text-xs md:text-lg dark:text-gray-300">Posted <span class="font-medium">{{ $postsCount }}</span>
-                    {{ Str::plural('post',$postsCount) }}, and recieve
+                <h4 class="mb-5 text-xs md:text-lg dark:text-gray-300">Posted <span
+                        class="font-medium">{{ $postsCount }}</span>
+                    {{ Str::plural('post', $postsCount) }}, and recieve
                     <span class="font-medium">{{ $userRecievedLikes }}</span>
-                    {{ Str::plural('like',$userRecievedLikes) }}</h4>
+                    {{ Str::plural('like', $userRecievedLikes) }}
+                </h4>
             </div>
             <div>
                 <div class="mb-4">
-                    <a href="/dashboard/audience" class="btn-primary text-xs" type="submit">Audience Stats</a>
+                    <a href="/dashboard/audience" class="btn-primary text-xs">Audience Stats</a>
                 </div>
             </div>
         </div>
@@ -23,7 +25,7 @@
                         <div class="outer-block-header">
                             <h3 class="font-medium">Your posts impact (last 15 days)</h3>
                         </div>
-                        <canvas class="outer-block-body" id="lineChart"></canvas>
+                        <canvas class="outer-block-body" id="statsChart"></canvas>
                     </div>
                 </div>
                 <div class="lg:w-1/4">
@@ -67,7 +69,7 @@
                 @foreach ($posts as $post)
                     <div class="py-5 border-b border-gray-200">
                         <p class="p-0 m-0">{{ $post->content }} <span><b>({{ $post->likes->count() }}
-                            {{ Str::plural('like', $post->likes->count()) }})</b></span></p>
+                                    {{ Str::plural('like', $post->likes->count()) }})</b></span></p>
                     </div>
                 @endforeach
 
@@ -85,25 +87,44 @@
     <script src="{{ asset('assets/js/Chart.min.js') }}"></script>
 
     <script>
-        const lineChart = document.getElementById('lineChart').getContext('2d');
+        let statsChart = document.getElementById('statsChart').getContext('2d');
 
-        new Chart(lineChart, {
+        let data = {
+            labels: <?= json_encode(array_keys($postStatsData)) ?>,
+            datasets: [{
+                type: 'bar',
+                label: 'Bar Chart',
+                backgroundColor: 'rgba(112, 113, 249, 0.3)',
+                borderColor: 'rgba(112, 113, 249, 0.9)',
+                borderWidth: 2,
+                fill: true,
+                data: <?= json_encode(array_values($postStatsData)) ?>
+            }, {
+                type: 'line',
+                label: 'Line Chart',
+                backgroundColor: 'rgba(70, 113, 249, 0.1)',
+                borderColor: 'rgba(70, 113, 249, 0.8)',
+                borderWidth: 2,
+                fill: true,
+                data: <?= json_encode(array_values($postStatsData)) ?>
+            }]
+        }
+
+        // config
+        new Chart(statsChart, {
             type: 'bar',
-            data: {
-                labels: <?= json_encode(array_keys($postStatsData)) ?>,
-                datasets: [{
-                    label: 'Total Likes',
-                    backgroundColor: 'rgba(108, 113, 249, 0.3)',
-                    borderColor: 'rgba(108, 113, 249, 0.9)',
-                    borderWidth: 2,
-                    fill: true,
-                    data: <?= json_encode(array_values($postStatsData)) ?>
-                }],
-            },
+            data: data,
             options: {
                 scales: {
                     y: {
                         beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            filter: (legendItem, chartData) => legendItem.datasetIndex !== 2
+                        }
                     }
                 }
             }
