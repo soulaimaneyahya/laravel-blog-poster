@@ -66,4 +66,9 @@
     .stats-box .value {
         @apply text-xl lg:text-3xl font-bold leading-none
     }
+
+    /* profile dropdown menu */
+    .navbar-profile-dropdown-custom-menu {
+        @apply z-10 font-normal bg-white divide-y divide-gray-100 rounded-md shadow-lg dark:bg-gray-700 dark:divide-gray-600 absolute mt-2
+    }
 }
