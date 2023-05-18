@@ -13,7 +13,7 @@
     <meta property="og:description" content="{{ config('app.name') }}" />
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link rel="icon" href="{{ asset('assets/icon/icon.png') }}" type="image/png">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/sass/main.scss', 'resources/js/app.js', 'resources/js/jquery.js'])
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-icons.css') }}">
     @yield('styles')
 </head>
@@ -42,16 +42,8 @@
             @yield('content')
         </main>
     </div>
+    <script src="{{ asset('/assets/js/jquery-3.5.1.min.js') }}"></script>
     @yield('scripts')
-    {{-- Hide Alert After 9 Seconds --}}
-<script>
-    let s_alert = document.querySelector('.alert_');
- function hideAlert(){
-     if(s_alert){
-         s_alert.remove();
-     }
- }
- setTimeout(hideAlert,9000);
- </script>
 </body>
+
 </html>
