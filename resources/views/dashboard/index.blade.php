@@ -25,7 +25,9 @@
                         <div class="outer-block-header">
                             <h3 class="font-medium">Your posts impact (last 15 days)</h3>
                         </div>
-                        <canvas class="outer-block-body" id="statsChart"></canvas>
+                        <dashboard
+                            :post-stats-data="{{ json_encode($postStatsData) }}"
+                        ></dashboard>
                     </div>
                 </div>
                 <div class="lg:w-1/4">
@@ -81,53 +83,4 @@
             @endif
         </section>
     </section>
-@endsection
-
-@section('scripts')
-    <script src="{{ asset('assets/js/Chart.min.js') }}"></script>
-
-    <script>
-        let statsChart = document.getElementById('statsChart').getContext('2d');
-
-        let data = {
-            labels: <?= json_encode(array_keys($postStatsData)) ?>,
-            datasets: [{
-                type: 'bar',
-                label: 'Bar Chart',
-                backgroundColor: 'rgba(112, 113, 249, 0.3)',
-                borderColor: 'rgba(112, 113, 249, 0.9)',
-                borderWidth: 2,
-                fill: true,
-                data: <?= json_encode(array_values($postStatsData)) ?>
-            }, {
-                type: 'line',
-                label: 'Line Chart',
-                backgroundColor: 'rgba(70, 113, 249, 0.1)',
-                borderColor: 'rgba(70, 113, 249, 0.8)',
-                borderWidth: 2,
-                fill: true,
-                data: <?= json_encode(array_values($postStatsData)) ?>
-            }]
-        }
-
-        // config
-        new Chart(statsChart, {
-            type: 'bar',
-            data: data,
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                },
-                plugins: {
-                    legend: {
-                        labels: {
-                            filter: (legendItem, chartData) => legendItem.datasetIndex !== 2
-                        }
-                    }
-                }
-            }
-        });
-    </script>
 @endsection

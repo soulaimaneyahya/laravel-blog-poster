@@ -13,7 +13,7 @@
     <meta property="og:description" content="{{ config('app.name') }}" />
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link rel="icon" href="{{ asset('assets/icon/icon.png') }}" type="image/png">
-    @vite(['resources/css/app.css', 'resources/sass/main.scss', 'resources/js/app.js', 'resources/js/jquery.js'])
+    @vite(['resources/css/app.css', 'resources/sass/main.scss', 'resources/js/app.js'])
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-icons.css') }}">
     @yield('styles')
 </head>
@@ -39,10 +39,11 @@
                     <span>{{ session('status') }}</span>
                 </div>
             @endif
-            @yield('content')
+            <div id="app">
+                @yield('content')
+            </div>
         </main>
     </div>
-    <script src="{{ asset('/assets/js/jquery-3.5.1.min.js') }}"></script>
     @yield('scripts')
 </body>
 
