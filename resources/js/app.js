@@ -1,10 +1,11 @@
-import './bootstrap';
-import 'flowbite';
-import { createApp } from 'vue';
+import './navbar'
+import './bootstrap'
+import 'flowbite'
+import { createApp } from 'vue'
 
-const app = createApp({});
+const app = createApp({})
 
-import dashboard from './components/dashboard.vue';
-app.component('dashboard', dashboard);
+import dashboard from './components/dashboard.vue'
+app.component('Dashboard', dashboard)
 
-app.mount('#app');
+app.mount('#app')

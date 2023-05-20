@@ -84,7 +84,3 @@
         </section>
     </section>
 @endsection
-
-@section('scripts')
-{{-- <script src="{{ asset('assets/js/Chart.min.js') }}"></script> --}}
-@endsection

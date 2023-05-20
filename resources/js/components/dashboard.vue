@@ -1,23 +1,23 @@
 <template>
-    <div>
-        <BarChart :post-stats-data="postStatsData" />
-    </div>
+  <div>
+    <BarChart :post-stats-data="postStatsData" />
+  </div>
 </template>
   
 <script>
-import BarChart from './partials/BarChart.vue';
+import BarChart from './partials/BarChart.vue'
 
 export default {
-    name: 'dashboard',
-    components: {
-        BarChart
+  name: 'Dashboard',
+  components: {
+    BarChart,
+  },
+  props: {
+    postStatsData: {
+      type: Object,
+      required: true,
     },
-    props: {
-        postStatsData: {
-            type: Object,
-            required: true
-        }
-    }
+  },
 }
 </script>
   
