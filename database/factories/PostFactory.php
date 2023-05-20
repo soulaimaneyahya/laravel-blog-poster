@@ -21,4 +21,11 @@ class PostFactory extends Factory
             'created_at' => fake()->dateTimeBetween('-3 weeks')
         ];
     }
+
+    public function lorem(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'content' => 'lorem ipsum dolor sit amet.'
+        ]);
+    }
 }

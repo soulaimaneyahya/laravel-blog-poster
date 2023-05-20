@@ -51,6 +51,6 @@ class PostController extends Controller
 
         $post->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('status', 'Post Deleted');
     }
 }
